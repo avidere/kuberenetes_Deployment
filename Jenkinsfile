@@ -46,10 +46,10 @@ pipeline {
             steps{
                 script{
                     sshagent(['Docker-Server']) {
-                        sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.22.228 sudo kubectl apply -f Pythonapp-deployment "
-                        sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.22.228 kubectl get po"
-                        sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.22.228 kubectl get all "
-                        sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.22.228 sudo rm -r Pythonapp-deployment"
+                        sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo kubectl apply -f Pythonapp-deployment "
+                        sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo kubectl get po"
+                        sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo kubectl get all "
+                        sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo rm -r Pythonapp-deployment"
                     }
                 }
             }
