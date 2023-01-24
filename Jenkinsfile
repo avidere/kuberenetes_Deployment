@@ -13,7 +13,7 @@ pipeline {
                 }
             }
         }
-        stage('Git Checkout') {
+        stage('Build Code') {
             steps {
                 script {
                     sh 'python3 rsvp.py'
