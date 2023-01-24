@@ -12,7 +12,13 @@ pipeline {
                     echo 'Git Checkout Completed'
                 }
             }
-        }/*
+        }
+        stage('Git Checkout') {
+            steps {
+                script {
+                    sh 'python3 rsvp.py'
+                }
+            }/*
 		stage('Build Docker image and push To Docker hub'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Docker_hub', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
