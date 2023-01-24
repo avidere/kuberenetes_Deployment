@@ -26,7 +26,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'Docker_hub', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
                 script{
                     sshagent(['Docker-Server']) {
-                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 git branch: "${git_branch}", url: "${git_url}" "
+                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 git clone ${git_url} "
                       //  sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.22.228 sed -i 's/tag/${env.build_no}/g' Deployment.yaml "
                       //  sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.22.228 sudo cp Deployment.yaml service.yaml /home/ubuntu/"
                       //  sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.22.228 docker build -t avinashdere99/python:${env.build_no} ."
