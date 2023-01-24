@@ -1,6 +1,7 @@
 pipeline {
     agent any
     environment {
+        
         def git_branch = 'master'
         def git_url = 'https://github.com/avidere/Pythonapp-deployment.git'
     }
@@ -28,7 +29,7 @@ pipeline {
                     sshagent(['Docker-Server']) {
                           sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 git clone ${git_url} "
                           sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo mv Pythonapp-deployment /home/ubuntu/ "
-                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sed -i 's/tag/${env.build_no}/g' Pythonapp-deployment/web_deployment.yaml "
+                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sed -i 's/tag/${env.BUILD_NUMBER}/g' Pythonapp-deployment/web_deployment.yaml "
                       //  sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo cp Deployment.yaml service.yaml /home/ubuntu/"
                       //  sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker build -t avinashdere99/python:${env.build_no} ."
                        // sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker login -u $docker_user -p $docker_pass"
