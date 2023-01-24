@@ -16,7 +16,7 @@ pipeline {
         stage('Build Code') {
             steps {
                 script {
-                    sh 'python rsvp.py'
+                    sh 'python3 rsvp.py'
                 }
             }
         }    /*
