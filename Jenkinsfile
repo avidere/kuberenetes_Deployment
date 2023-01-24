@@ -13,7 +13,7 @@ pipeline {
                 }
             }
         }
-        stage('Build Code') {
+        stage('Build  and Test Code') {
             steps {
                 script {
                   //  sh 'python3 rsvp.py'
