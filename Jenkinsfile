@@ -32,11 +32,11 @@ pipeline {
        
                           sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo sed -i 's/tag/${env.BUILD_NUMBER}/g' /home/dockeradmin/Pythonapp-deployment/web_deployment.yaml"
                          // sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo cp /home/ubuntu/Pythonapp-deployment/*.yaml /home/ubuntu/"
-                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker build -t avinashdere99/python:${env.BUILD_NUMBER} /home/dockeradmin/Pythonapp-deployment/Dockerfile"
+                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker build -t avinashdere99/python:${env.BUILD_NUMBER} /home/dockeradmin/Pythonapp-deployment/."
                           sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker login -u $docker_user -p $docker_pass"
-                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo rm -r /home/ubuntu/Pythonapp-deployment "
+                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo rm -r Pythonapp-deployment "
                          // sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker push avinashdere99/python:${env.BUILD_NUMBER}"
-                        //sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker rmi avinashdere99/python:${env.BUILD_NUMBER}"
+                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker rmi avinashdere99/python:${env.BUILD_NUMBER}"
                     }
                   }
                 }
