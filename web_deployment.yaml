@@ -29,14 +29,6 @@ spec:
         ports:
         - containerPort: 5000
           name: web-port
-        livenessProbe:
-          exec:
-            command: 
-             - /bin/sh
-             - c
-             - nc -z mongodb 27017
-          initialDelaySeconds: 60
-          periodSeconds: 10
         readinessProbe:
           exec:
             command: 
