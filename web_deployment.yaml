@@ -12,6 +12,11 @@ spec:
       labels:
         app: test
     spec:
+      initContainers:
+        - name: init-db
+          image: busybox:1.31
+          command: ['sh', '-c', 'echo -e "Checking for the availability of Mongodb Server deployment"; while ! nc -z testdb 27017; do sleep 1; printf "-"; done; echo -e "  >> Mongo DB Server has started";']      
+     
       containers:
       - name: test-app
         image: avinashdere99/python:tag
