@@ -17,7 +17,10 @@ spec:
         image: avinashdere99/python:tag
         env:
         - name: MONGODB_HOST
-          value: mongodb
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb_configmap
+              key: database_url
         ports:
         - containerPort: 5000
           name: web-port
