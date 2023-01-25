@@ -34,7 +34,7 @@ spec:
             command: 
              - /bin/sh
              - c
-             - nc -z test-app 5000
+             - nc -z test 5000
           initialDelaySeconds: 60
           periodSeconds: 10
         readinessProbe:
@@ -42,6 +42,6 @@ spec:
             command: 
              - /bin/sh
              - c
-             - nc -z test-app 5000
+             - nc -z test 5000
           initialDelaySeconds: 60
           periodSeconds: 10
