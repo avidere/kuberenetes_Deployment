@@ -29,3 +29,17 @@ spec:
         ports:
         - containerPort: 5000
           name: web-port
+        livenessProbe:
+          exec:
+            command: 
+             - /bin/sh
+             - c
+             - nc -z test 5000
+          intialDelaySeconds: 60
+          periodSeconds: 10
+        readinessProbe:
+          exec:
+            command: 
+             - /bin/sh
+             - c
+             - nc -z test 5000
