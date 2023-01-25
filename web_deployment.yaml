@@ -29,11 +29,19 @@ spec:
         ports:
         - containerPort: 5000
           name: web-port
-        readinessProbe:
+        livenessProbe:
           exec:
             command: 
              - /bin/sh
              - c
-             - nc -z mongodb 27017
+             - nc -z test-app 5000
+          initialDelaySeconds: 60
+          periodSeconds: 10
+        readinessProbe:
+          execc:
+            command: 
+             - /bin/sh
+             - c
+             - nc -z test-app 5000
           initialDelaySeconds: 60
           periodSeconds: 10
