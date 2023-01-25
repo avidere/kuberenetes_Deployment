@@ -37,11 +37,4 @@ spec:
              - nc -z test 5000
           initialDelaySeconds: 60
           periodSeconds: 10
-        readinessProbe:
-          exec:
-            command: 
-             - /bin/sh
-             - c
-             - nc -z test 5000
-          initialDelaySeconds: 60
-          periodSeconds: 10
+
