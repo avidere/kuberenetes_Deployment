@@ -3,7 +3,7 @@ pipeline {
     environment {
         
         def git_branch = 'master'
-        def git_url = 'https://github.com/shankar7773/Pythonapp-deployment/blob/master/Jenkinsfile'
+        def git_url = 'https://github.com/shankar7773/Pythonapp-deployment.git'
     }
     stages {
         stage('Git Checkout') {
