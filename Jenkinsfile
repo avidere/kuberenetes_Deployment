@@ -31,9 +31,9 @@ pipeline {
                           sh "ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.89.114 git clone ${git_url} "
 
        
-                          sh "ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.89.114 sudo sed -i 's/tag/${env.BUILD_NUMBER}/g' /home/dockeradmin/Pythonapp-deployment/web_deployment.yaml"
+                          sh "ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.89.114 sudo sed -i 's/tag/${env.BUILD_NUMBER}/g' /home/ubuntu/Pythonapp-deployment/web_deployment.yaml"
                          // sh "ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.89.114 sudo cp /home/ubuntu/Pythonapp-deployment/*.yaml /home/ubuntu/"
-                          sh "ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.89.114 docker build -t shankar7773/python:${env.BUILD_NUMBER} /home/dockeradmin/Pythonapp-deployment/."
+                          sh "ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.89.114 docker build -t shankar7773/python:${env.BUILD_NUMBER} /home/ubuntu/Pythonapp-deployment/."
                           sh "ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.89.114 docker login -u $uu -p $pp"
                        //   sh "ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.89.114 sudo rm -r Pythonapp-deployment "
                           sh "ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.89.114 docker push shankar7773/python:${env.BUILD_NUMBER}"
