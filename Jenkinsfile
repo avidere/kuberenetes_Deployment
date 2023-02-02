@@ -22,7 +22,7 @@ pipeline {
                 }
             }
         }    
-/*		stage('Build Docker image and push To Docker hub'){
+		stage('Build Docker image and push To Docker hub'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'Dockerhub1', passwordVariable: 'pp', usernameVariable: 'uu')]) {
                 script{
@@ -43,7 +43,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy Application on EKS Cluster'){
+     /*   stage('Deploy Application on EKS Cluster'){
             steps{
                 script{
                     sshagent(['k8']) {
