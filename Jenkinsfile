@@ -43,7 +43,7 @@ pipeline {
                 }
             }
         }
-     /*   stage('Deploy Application on EKS Cluster'){
+        stage('Deploy Application on EKS Cluster'){
             steps{
                 script{
                     sshagent(['k8']) {
@@ -54,6 +54,6 @@ pipeline {
                     }
                 }
             }
-        } */
+        } 
     }
 }
