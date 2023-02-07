@@ -31,9 +31,9 @@ pipeline {
                           sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 git clone ${git_url} "
 
        
-                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo sed -i 's/tag/${env.BUILD_NUMBER}/g' /home/dockeradmin/Pythonapp-deployment/web_deployment.yaml"
+                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo sed -i 's/tag/${env.BUILD_NUMBER}/g' /home/dockeradmin/kuberenetes_Deployment/web_deployment.yaml"
                          // sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo cp /home/ubuntu/Pythonapp-deployment/*.yaml /home/ubuntu/"
-                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker build -t avinashdere99/python:${env.BUILD_NUMBER} /home/dockeradmin/Pythonapp-deployment/."
+                          sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker build -t avinashdere99/python:${env.BUILD_NUMBER} /home/dockeradmin/kuberenetes_Deployment/."
                           sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker login -u $docker_user -p $docker_pass"
                        //   sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo rm -r Pythonapp-deployment "
                           sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 docker push avinashdere99/python:${env.BUILD_NUMBER}"
@@ -47,7 +47,7 @@ pipeline {
             steps{
                 script{
                     sshagent(['Docker-Server']) {
-                        sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo kubectl apply -f Pythonapp-deployment "
+                        sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo kubectl apply -f kuberenetes_Deployment "
                         sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo kubectl get po"
                         sh "ssh -o StrictHostKeyChecking=no -l dockeradmin 172.31.2.23 sudo kubectl get all "
                         
