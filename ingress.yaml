@@ -18,12 +18,12 @@ metadata:
 spec:
   ingressClassName: my-aws-ingress-class
   rules:
-    - http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: test 
-                port:
-                  number: 31081
+    - http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: test 
+              port:
+                number: 31081
